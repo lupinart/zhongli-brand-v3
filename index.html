@@ -673,6 +673,12 @@ addEventListener('keydown',e=>{
   else if(e.key==='Home')go(0);else if(e.key==='End')go(slides.length-1);
 });
 document.querySelectorAll('.mod').forEach(m=>m.addEventListener('click',()=>m.classList.toggle('flipped')));
+addEventListener('pointerup',e=>{
+  if(!matchMedia('(pointer: coarse)').matches)return;
+  if(modal.classList.contains('open'))return;
+  if(e.target.closest('button,a,input,select,textarea,#dots,.mod,.morebtn'))return;
+  go(i+1);
+});
 
 /* 更多細節 modal */
 const MORE={
